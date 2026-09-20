@@ -1,4 +1,5 @@
-Laboratorio_2_GitHub_FINAL/
+Laboratorio-2/
+├── Laboratorio_2.pdf
 ├── Laboratorio_2_Completo.R
 ├── Laboratorio_2.Rproj
 ├── 00_VERIFICAR_PROYECTO.R
@@ -8,4 +9,5 @@ Laboratorio_2_GitHub_FINAL/
 │   ├── DBH_1.csv
 │   └── DBH_manual_Pinus_pseudostrobus.csv
 └── resultados/
-    └── (se genera al ejecutar el laboratorio)
+    ├── histogramas/
+    └── barplots/

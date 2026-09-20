@@ -1,53 +1,40 @@
-# Laboratorio 2
+# Laboratorio 2 — Importar datos en RStudio
 
-Proyecto reproducible en **R/RStudio** preparado para subir a GitHub.
+**Curso:** Trabajar con datos en R  
+**Profesor:** Dr. Marco A. González Tagle  
+**Semestre:** Agosto–Diciembre 2026
+
+Este repositorio reproduce el **Laboratorio 2 oficial** incluido en `Laboratorio_2.pdf`.
 
 ## Estructura
 
-- `Laboratorio_2_Completo.R`: script principal.
-- `00_VERIFICAR_PROYECTO.R`: verifica archivos, carpetas y paquetes.
-- `Laboratorio_2.Rproj`: proyecto de RStudio.
-- `data/`: archivos de datos.
-- `resultados/`: resultados generados por el script.
-- `LISTA_ARCHIVOS.txt`: inventario del proyecto.
+- `Laboratorio_2.pdf` — documento fuente oficial.
+- `Laboratorio_2_Completo.R` — script reproducible de las Partes 1, 2 y 3.
+- `00_VERIFICAR_PROYECTO.R` — comprobación de estructura y datos.
+- `Laboratorio_2.Rproj` — proyecto de RStudio.
+- `data/` — datos DBH del laboratorio.
+- `resultados/` — figuras y resumen generados por el script.
 
 ## Ejecución
 
-1. Descarga/clona este repositorio.
-2. Abre `Laboratorio_2.Rproj` en RStudio.
-3. Ejecuta:
+Abrir `Laboratorio_2.Rproj` en RStudio y ejecutar:
 
 ```r
 source("00_VERIFICAR_PROYECTO.R")
-```
-
-4. Si la verificación es correcta, ejecuta:
-
-```r
 source("Laboratorio_2_Completo.R")
 ```
 
-## Dependencias
+## Paquetes
 
-El laboratorio utiliza funciones base de R y, cuando está disponible, `readr`.
-
-Instalación:
+El laboratorio utiliza principalmente funciones base de R. Para los ejemplos de GitHub y Dropbox se emplean `readr` y `repmis`, respectivamente:
 
 ```r
 install.packages("readr")
+install.packages("repmis")
 ```
 
-## GitHub
+Las descargas externas están protegidas con `tryCatch()` para que una falla de Internet no impida ejecutar las partes locales.
 
-Desde la carpeta raíz del proyecto:
+## Nota de reproducibilidad
 
-```bash
-git init
-git add .
-git commit -m "Laboratorio 2 completo"
-git branch -M main
-git remote add origin URL_DE_TU_REPOSITORIO
-git push -u origin main
-```
-
-Sustituye `URL_DE_TU_REPOSITORIO` por la URL de tu repositorio de GitHub.
+El script conserva la organización y los ejemplos del PDF. Se hicieron únicamente correcciones de nombres inconsistentes que impedirían la ejecución, por ejemplo `senacisa` → `senasica` y `mamifero` → `mamiferos`. Los cambios están documentados al inicio del script.

@@ -1,15 +1,8 @@
-# ============================================================
-# 00_VERIFICAR_PROYECTO.R
-# Verificación previa del Laboratorio 2
-# ============================================================
+# VERIFICACIÓN DEL PROYECTO - LABORATORIO 2
 
 cat("=== VERIFICACIÓN DEL LABORATORIO 2 ===\n\n")
-
-cat("Directorio actual:\n")
-print(getwd())
-
-directorios <- c("data", "resultados")
 archivos <- c(
+  "Laboratorio_2.pdf",
   "Laboratorio_2_Completo.R",
   "Laboratorio_2.Rproj",
   "README.md",
@@ -18,18 +11,20 @@ archivos <- c(
   "data/DBH_manual_Pinus_pseudostrobus.csv"
 )
 
-cat("\nDirectorios:\n")
-for (d in directorios) {
-  cat(sprintf("[%s] %s\n", if (dir.exists(d)) "OK" else "FALTA", d))
-}
-
-cat("\nArchivos:\n")
 for (f in archivos) {
   cat(sprintf("[%s] %s\n", if (file.exists(f)) "OK" else "FALTA", f))
 }
 
-cat("\nPaquetes:\n")
-cat(sprintf("[%s] readr\n",
-            if (requireNamespace("readr", quietly = TRUE)) "OK" else "FALTA"))
+if (file.exists("data/DBH_1.csv")) {
+  trees <- read.csv("data/DBH_1.csv")
+  cat("\nRegistros DBH_1:", nrow(trees), "\n")
+  cat("Columnas:", paste(names(trees), collapse=", "), "\n")
+  cat("Media DBH:", mean(trees$dbh), "\n")
+  cat("SD DBH:", sd(trees$dbh), "\n")
+  cat("DBH < 10:", sum(trees$dbh < 10), "\n")
+}
 
-cat("\n=== FIN DE VERIFICACIÓN ===\n")
+cat("\nPaquetes opcionales:\n")
+cat(sprintf("readr: %s\n", requireNamespace("readr", quietly=TRUE)))
+cat(sprintf("repmis: %s\n", requireNamespace("repmis", quietly=TRUE)))
+cat("\n=== FIN ===\n")
