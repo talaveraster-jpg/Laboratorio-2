@@ -1,0 +1,13 @@
+Media DBH: 15.64333
+Desviación estándar DBH: 7.448892
+Número de individuos con DBH < 10: 8
+Índices de individuos con DBH < 10:
+[1] 6 8 9 13 19 21 22 24
+Media trees.1 (DBH <= 10): 7.677778
+Frecuencias chickwts:
+casein 12
+horsebean 10
+linseed 12
+meatmeal 11
+soybean 14
+sunflower 12
