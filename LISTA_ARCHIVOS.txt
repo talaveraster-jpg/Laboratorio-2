@@ -1,0 +1,11 @@
+Laboratorio_2_GitHub_FINAL/
+├── Laboratorio_2_Completo.R
+├── Laboratorio_2.Rproj
+├── 00_VERIFICAR_PROYECTO.R
+├── README.md
+├── LISTA_ARCHIVOS.txt
+├── data/
+│   ├── DBH_1.csv
+│   └── DBH_manual_Pinus_pseudostrobus.csv
+└── resultados/
+    └── (se genera al ejecutar el laboratorio)
