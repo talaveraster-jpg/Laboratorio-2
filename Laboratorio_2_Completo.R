@@ -55,39 +55,33 @@ url <- paste0(
   "actividades_inspeccion_movilizacion/",
   "29_actividades-inspeccion-movilizacion.csv"
 )
-
+# Intento de descarga del conjunto de datos del Gobierno de México
+# La fuente puede responder 403 dependiendo de la disponibilidad del portal.
 inspeccion <- tryCatch(
-  read.csv(url),
+  suppressWarnings(read.csv(url)),
   error = function(e) {
-    message("No fue posible descargar el archivo del portal de datos: ", conditionMessage(e))
+    message(
+      "Aviso: no fue posible descargar el archivo de SENASICA. ",
+      "El resto del laboratorio continuará. Detalle: ",
+      conditionMessage(e)
+    )
     NULL
   }
 )
 
 if (!is.null(inspeccion)) {
-  cat("\n--- head(inspeccion) ---\n")
+  cat("\nPrimeras filas del conjunto SENASICA:\n")
   print(head(inspeccion))
 }
 
-# El PDF muestra también la construcción del URL mediante paste0().
+# Construcción de la URL mediante paste0(), como se solicita en el PDF
 prof_url_2 <- paste0(
   "https://repodatos.atdt.gob.mx/api_update/senasica/",
   "actividades_inspeccion_movilizacion/",
   "29_actividades-inspeccion-movilizacion.csv"
 )
-
-senasica <- tryCatch(
-  read.csv(prof_url_2),
-  error = function(e) {
-    message("No fue posible descargar senasica: ", conditionMessage(e))
-    NULL
-  }
-)
-
 # Corrección de la errata del PDF: senacisa -> senasica
-if (!is.null(senasica)) {
-  print(head(senasica))
-}
+senasica <- inspeccion
 
 # 1.5 Datos de URL seguras: Dropbox
 # El PDF utiliza repmis::source_data().
@@ -225,14 +219,25 @@ dev.off()
 # 3.4 Gráfica final personalizada
 png("resultados/barplots/Figura_10_barplot_personalizado.png",
     width = 1800, height = 1200, res = 180)
-par(mar = c(7,5,4,2) + 0.1)
+
+par(mar = c(13, 5, 4, 2) + 0.1)
+
 barplot(
   feeds[order(feeds, decreasing = TRUE)],
   main = "Frecuencias por tipos de alimentación",
-  xlab = "Tipo de alimentación",
+  xlab = "",
   ylab = "Número de Pollos",
-  las = 2
+  las = 2,
+  cex.names = 0.9
 )
+
+mtext(
+  "Tipo de alimentación",
+  side = 1,
+  line = 10,
+  cex = 1
+)
+
 dev.off()
 
 # Guardar resumen reproducible
